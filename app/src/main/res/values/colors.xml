@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="material_indigo_500">#3F51B5</color>
+    <color name="material_indigo_600">#3949AB</color>
+    <color name="material_indigo_700">#303F9F</color>
+    <color name="material_indigo_800">#283593</color>
+    <color name="material_indigo_900">#1A237E</color>
+</resources>

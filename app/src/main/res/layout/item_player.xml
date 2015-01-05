@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/points_header"
+        android:layout_alignBottom="@+id/points_header"
+        android:textColor="@android:color/white"
+        fbutton:buttonColor="@color/fbutton_color_clouds"
+        fbutton:shadowColor="@color/fbutton_color_silver"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"/>
+
+    <RelativeLayout
+        android:id="@+id/points_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/header_logo"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/logo_frog"
+            android:scaleType="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_logo"
+            android:layout_centerHorizontal="true"
+            android:text="Pepe"
+            android:paddingBottom="20dp"
+            android:textSize="20sp"
+            android:textColor="@color/material_blue_grey_800"
+            android:id="@+id/header_name" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

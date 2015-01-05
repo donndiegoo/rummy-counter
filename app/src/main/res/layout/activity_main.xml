@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <info.hoang8f.widget.FButton
+            android:text="NUEVA PARTIDA"
+            android:id="@+id/new_game"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            fbutton:buttonColor="@color/material_indigo_500"
+            fbutton:shadowColor="@color/material_indigo_800"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"/>
+
+        <info.hoang8f.widget.FButton
+            android:layout_marginTop="15dp"
+            android:text="ESTADISTICAS"
+            android:id="@+id/statistics"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            fbutton:buttonColor="@color/material_indigo_500"
+            fbutton:shadowColor="@color/material_indigo_800"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="5dp"
+            fbutton:cornerRadius="5dp"/>
+
+        </LinearLayout>
+</RelativeLayout>

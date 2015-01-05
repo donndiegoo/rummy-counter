@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto">
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/new_game"
+        android:layout_width="300dp"
+        android:layout_height="400dp"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/white"
+        fbutton:buttonColor="#FFFDE7"
+        fbutton:shadowColor="#9E9E9E"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="20dp"
+        fbutton:cornerRadius="10dp"/>
+
+</RelativeLayout>
