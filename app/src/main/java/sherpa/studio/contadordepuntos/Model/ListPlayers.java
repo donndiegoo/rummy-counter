@@ -1,6 +1,8 @@
 package sherpa.studio.contadordepuntos.Model;
 
-import com.google.gson.annotations.SerializedName;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,9 +10,8 @@ import java.util.List;
 /**
  * Created by diego on 03/01/15.
  */
-public class ListPlayers{
+public class ListPlayers implements MyJsonObject{
 
-    @SerializedName("listPlayers")
     private List<Player> mListPlayers;
 
     public ListPlayers()
@@ -23,13 +24,6 @@ public class ListPlayers{
         Player player = new Player(name, typeAvatar);
         mListPlayers.add(player);
     }
-
-
-    public int getNewId()
-    {
-        return mListPlayers.size();
-    }
-
 
     public List<Player> getPlayers() {
         return mListPlayers;
@@ -46,5 +40,30 @@ public class ListPlayers{
         }
 
         return selectedPlayers;
+    }
+
+    @Override
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jsonObj = new JSONObject();
+
+        JSONArray jsonArray = new JSONArray();
+        for (Player player : mListPlayers) {
+            JSONObject pointObject = player.toJSON();
+            jsonArray.put(pointObject);
+        }
+        jsonObj.put("players",jsonArray);
+        return jsonObj;
+    }
+
+    @Override
+    public void fromJSON(String json) throws JSONException{
+        JSONObject jObj = new JSONObject(json);
+
+        JSONArray jArr = jObj.getJSONArray("players");
+        for (int i=0; i < jArr.length(); i++) {
+            Player player = new Player();
+            player.fromJSON(jArr.getString(i));
+            mListPlayers.add(player);
+        }
     }
 }

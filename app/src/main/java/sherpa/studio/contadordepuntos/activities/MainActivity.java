@@ -21,5 +21,13 @@ public class MainActivity extends Activity {
                 PlayersActivity.startActivity(MainActivity.this);
             }
         });
+
+        FButton buttonStatistics = (FButton) findViewById(R.id.statistics);
+        buttonStatistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                StatisticsActivity.startActivity(MainActivity.this);
+            }
+        });
     }
 }

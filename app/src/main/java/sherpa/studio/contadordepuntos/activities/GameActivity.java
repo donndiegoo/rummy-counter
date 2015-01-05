@@ -8,7 +8,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,8 +68,27 @@ public class GameActivity extends ActionBarActivity {
         findViewById(R.id.finish_game).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyApplication.addGame(mGame);
-                finish();
+                (new MaterialDialog.Builder(GameActivity.this)
+                        .title("Partida terminada")
+                        .content("?Desea terminar la partida?")
+                        .positiveText("Si")
+                        .negativeText("No")
+                        .callback(new MaterialDialog.ButtonCallback() {
+                            @Override
+                            public void onPositive(MaterialDialog dialog) {
+                                super.onPositive(dialog);
+
+                                MyApplication.addGame(mGame);
+                                finish();
+
+
+                            }
+
+                            @Override
+                            public void onNegative(MaterialDialog dialog) {
+                                super.onNegative(dialog);
+                            }
+                        })).show();
             }
         });
     }

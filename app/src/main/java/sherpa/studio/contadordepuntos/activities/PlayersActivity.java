@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import info.hoang8f.widget.FButton;
 import sherpa.studio.contadordepuntos.Model.Player;
@@ -45,8 +45,26 @@ public class PlayersActivity extends ActionBarActivity {
         buttonStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GameActivity.startActivity(PlayersActivity.this);
-                finish();
+
+                if(MyApplication.mPlayers.getSelectedPlayers().size() < 2)
+                {
+                    (new MaterialDialog.Builder(PlayersActivity.this)
+                            .title("Jugadores")
+                            .content("Seleccione al menos 2 jugadores")
+                            .neutralText("Ok")
+                            .callback(new MaterialDialog.ButtonCallback() {
+                                @Override
+                                public void onNeutral(MaterialDialog dialog) {
+                                    super.onNeutral(dialog);
+                                }
+                            })).show();
+                }
+                else
+                {
+                    GameActivity.startActivity(PlayersActivity.this);
+                    finish();
+                }
+
             }
         });
 

@@ -3,8 +3,8 @@ package sherpa.studio.contadordepuntos.Model;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import sherpa.studio.contadordepuntos.MyApplication;
 import sherpa.studio.contadordepuntos.R;
@@ -12,7 +12,7 @@ import sherpa.studio.contadordepuntos.R;
 /**
  * Created by diego on 04/01/15.
  */
-public class Avatar {
+public class Avatar  implements MyJsonObject{
     public static final int TYPE_FROG = 0;
     public transient static final int TYPE_CRAB = 1;
     public transient static final int TYPE_CHICKEN = 2;
@@ -24,7 +24,8 @@ public class Avatar {
     public transient int mColorMain;
     public transient int mColorSecondary;
 
-    @SerializedName("type") private int mType;
+    private int mType;
+    private Context mContext;
 
     public Avatar()
     {
@@ -34,47 +35,68 @@ public class Avatar {
     public Avatar(int type)
     {
         mType = type;
+        mContext = MyApplication.mApplicationContext;
+        setUpAvatar();
 
-        Context context = MyApplication.mApplicationContext;
+    }
 
-        switch (type)
+    private void setUpAvatar()
+    {
+        switch (mType)
         {
             case TYPE_FROG:
             {
-                mIcon = context.getResources().getDrawable(R.drawable.logo_frog);
-                mColorMain = context.getResources().getColor(R.color.fbutton_color_emerald);
-                mColorSecondary = context.getResources().getColor(R.color.fbutton_color_nephritis);
+                mIcon = mContext.getResources().getDrawable(R.drawable.logo_frog);
+                mColorMain = mContext.getResources().getColor(R.color.fbutton_color_emerald);
+                mColorSecondary = mContext.getResources().getColor(R.color.fbutton_color_nephritis);
             }
             break;
             case TYPE_CRAB:
             {
-                mIcon = context.getResources().getDrawable(R.drawable.logo_crab);
-                mColorMain = context.getResources().getColor(R.color.fbutton_color_alizarin);
-                mColorSecondary = context.getResources().getColor(R.color.fbutton_color_pomegranate);
+                mIcon = mContext.getResources().getDrawable(R.drawable.logo_crab);
+                mColorMain = mContext.getResources().getColor(R.color.fbutton_color_alizarin);
+                mColorSecondary = mContext.getResources().getColor(R.color.fbutton_color_pomegranate);
             }
             break;
             case TYPE_CHICKEN:
             {
-                mIcon = context.getResources().getDrawable(R.drawable.logo_chicken);
-                mColorMain = context.getResources().getColor(R.color.fbutton_color_sun_flower);
-                mColorSecondary = context.getResources().getColor(R.color.fbutton_color_orange);
+                mIcon = mContext.getResources().getDrawable(R.drawable.logo_chicken);
+                mColorMain = mContext.getResources().getColor(R.color.fbutton_color_sun_flower);
+                mColorSecondary = mContext.getResources().getColor(R.color.fbutton_color_orange);
             }
             break;
             case TYPE_OCTOPUSS:
             {
-                mIcon = context.getResources().getDrawable(R.drawable.logo_octopuss);
-                mColorMain = context.getResources().getColor(R.color.fbutton_color_amethyst);
-                mColorSecondary = context.getResources().getColor(R.color.fbutton_color_wisteria);
+                mIcon = mContext.getResources().getDrawable(R.drawable.logo_octopuss);
+                mColorMain = mContext.getResources().getColor(R.color.fbutton_color_amethyst);
+                mColorSecondary = mContext.getResources().getColor(R.color.fbutton_color_wisteria);
             }
             break;
             case TYPE_SQUIRELL:
             {
-                mIcon = context.getResources().getDrawable(R.drawable.logo_squirrel);
-                mColorMain = context.getResources().getColor(R.color.fbutton_color_carrot);
-                mColorSecondary = context.getResources().getColor(R.color.fbutton_color_pumpkin);
+                mIcon = mContext.getResources().getDrawable(R.drawable.logo_squirrel);
+                mColorMain = mContext.getResources().getColor(R.color.fbutton_color_carrot);
+                mColorSecondary = mContext.getResources().getColor(R.color.fbutton_color_pumpkin);
             }
             break;
         }
     }
 
+    @Override
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("type", mType);
+        return jsonObj;
+    }
+
+    @Override
+    public void fromJSON(String json) throws JSONException{
+        JSONObject jObj = new JSONObject(json);
+        mType = jObj.getInt("type");
+        setUpAvatar();
+    }
+
+    public int getType() {
+        return mType;
+    }
 }

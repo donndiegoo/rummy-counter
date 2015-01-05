@@ -22,7 +22,16 @@
         </activity>
         <activity
             android:name=".activities.PlayersActivity"
-            android:label="@string/title_activity_players"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:parentActivityName=".activities.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="sherpa.studio.contadordepuntos.activities.MainActivity" />
+        </activity>
+        <activity
+            android:name=".activities.StatisticsActivity"
+            android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             android:parentActivityName=".activities.MainActivity" >
             <meta-data
