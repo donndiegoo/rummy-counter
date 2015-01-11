@@ -56,6 +56,7 @@ public class StatisticsActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_statistics);
 
         mTotalGames = (TextView) findViewById(R.id.statistics_total_games);

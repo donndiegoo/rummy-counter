@@ -80,6 +80,7 @@ public class GameActivity extends ActionBarActivity {
 
                                 MyApplication.addGame(mGame);
                                 finish();
+                                //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
 
 
                             }
@@ -198,8 +199,9 @@ public class GameActivity extends ActionBarActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
+    public void onBackPressed() {
+        finish();
+        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
 }

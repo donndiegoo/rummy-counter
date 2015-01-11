@@ -1,5 +1,6 @@
 package sherpa.studio.contadordepuntos.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -30,8 +31,8 @@ public class PlayersActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_players);
 
+        setContentView(R.layout.activity_players);
         for(Player player : MyApplication.mPlayers.getPlayers())
         {
             player.setSelected(false);
@@ -63,10 +64,17 @@ public class PlayersActivity extends ActionBarActivity {
                 {
                     GameActivity.startActivity(PlayersActivity.this);
                     finish();
+                    //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
 
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        //overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 }
